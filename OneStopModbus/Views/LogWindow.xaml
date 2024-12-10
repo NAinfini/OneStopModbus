@@ -1,0 +1,76 @@
+﻿<UserControl
+    x:Class="OneStopModbus.Views.LogWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    mc:Ignorable="d">
+    <Grid>
+        <dxg:GridControl x:Name="SystemLogsGrid" ItemsSource="{Binding logMsgs}">
+
+            <dxg:GridControl.View>
+                <dxg:TableView
+                    AllowBestFit="True"
+                    AllowEditing="False"
+                    AllowPerPixelScrolling="True"
+                    AutoFilterRowPosition="Header"
+                    BestFitArea="All"
+                    BestFitMode="VisibleRows"
+                    FontFamily="Verdana"
+                    FontSize="12"
+                    ShowAutoFilterRow="True"
+                    ShowGroupPanel="False"
+                    ShowIndicator="False">
+                    <dxg:TableView.FormatConditions>
+                        <dxg:FormatCondition
+                            ApplyToRow="True"
+                            FieldName="TextColor"
+                            PredefinedFormatName="LightRedFillWithDarkRedText"
+                            Value1="red"
+                            ValueRule="Equal" />
+                        <dxg:FormatCondition
+                            ApplyToRow="True"
+                            FieldName="TextColor"
+                            PredefinedFormatName="YellowFillWithDarkYellowText"
+                            Value1="yellow"
+                            ValueRule="Equal" />
+                        <dxg:FormatCondition
+                            ApplyToRow="True"
+                            FieldName="TextColor"
+                            Value1="yellowfill"
+                            ValueRule="Equal">
+                            <dx:Format Background="#69593e" />
+                        </dxg:FormatCondition>
+                    </dxg:TableView.FormatConditions>
+                </dxg:TableView>
+            </dxg:GridControl.View>
+            <dxg:GridColumn
+                Width="20*"
+                MinWidth="100"
+                FieldName="TimeStamp"
+                Header="TimeStamp" />
+            <dxg:GridColumn
+                Width="20*"
+                MinWidth="100"
+                FieldName="Lvl"
+                Header="Lvl" />
+            <dxg:GridColumn
+                Width="70*"
+                MinWidth="100"
+                FieldName="Text"
+                Header="Text" />
+        </dxg:GridControl>
+        <Button
+            Width="75"
+            Margin="10,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Clear_Click"
+            Content="Clear" />
+    </Grid>
+</UserControl>
