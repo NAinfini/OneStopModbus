@@ -4,73 +4,146 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="720"
     d:DesignWidth="1280"
+    lex:LocalizeDictionary.DesignCulture="zh"
+    lex:ResxLocalizationProvider.DefaultAssembly="OneStopModbus"
+    lex:ResxLocalizationProvider.DefaultDictionary="lang"
     mc:Ignorable="d">
     <Grid>
-        <dxg:GridControl x:Name="SystemLogsGrid" ItemsSource="{Binding logMsgs}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
 
+        <dxg:GridControl
+            x:Name="SystemLogsGrid"
+            Grid.Row="0"
+            FilterString="{Binding FilterString}"
+            ItemsSource="{Binding logMsgs}">
             <dxg:GridControl.View>
                 <dxg:TableView
                     AllowBestFit="True"
+                    AllowColumnFiltering="False"
                     AllowEditing="False"
+                    AllowFilterEditor="False"
                     AllowPerPixelScrolling="True"
-                    AutoFilterRowPosition="Header"
                     BestFitArea="All"
                     BestFitMode="VisibleRows"
                     FontFamily="Verdana"
                     FontSize="12"
-                    ShowAutoFilterRow="True"
+                    NavigationStyle="None"
+                    ShowAutoFilterRow="False"
+                    ShowCriteriaInAutoFilterRow="False"
+                    ShowFilterPanelMode="Never"
                     ShowGroupPanel="False"
-                    ShowIndicator="False">
+                    ShowIndicator="False"
+                    ShowVerticalLines="False">
                     <dxg:TableView.FormatConditions>
                         <dxg:FormatCondition
                             ApplyToRow="True"
-                            FieldName="TextColor"
-                            PredefinedFormatName="LightRedFillWithDarkRedText"
-                            Value1="red"
+                            FieldName="Level"
+                            PredefinedFormatName="GreenFillWithDarkGreenText"
+                            Value1="Information"
                             ValueRule="Equal" />
                         <dxg:FormatCondition
                             ApplyToRow="True"
-                            FieldName="TextColor"
+                            FieldName="Level"
                             PredefinedFormatName="YellowFillWithDarkYellowText"
-                            Value1="yellow"
+                            Value1="Warning"
                             ValueRule="Equal" />
                         <dxg:FormatCondition
                             ApplyToRow="True"
-                            FieldName="TextColor"
-                            Value1="yellowfill"
-                            ValueRule="Equal">
-                            <dx:Format Background="#69593e" />
-                        </dxg:FormatCondition>
+                            FieldName="Level"
+                            PredefinedFormatName="LightRedFillWithDarkRedText"
+                            Value1="Error"
+                            ValueRule="Equal" />
+                        <dxg:FormatCondition
+                            ApplyToRow="True"
+                            FieldName="Level"
+                            PredefinedFormatName="LightRedFillWithDarkRedText"
+                            Value1="Fatal"
+                            ValueRule="Equal" />
                     </dxg:TableView.FormatConditions>
                 </dxg:TableView>
             </dxg:GridControl.View>
             <dxg:GridColumn
-                Width="20*"
-                MinWidth="100"
+                x:Name="LogWindowTimeStampCol"
+                Width="200"
                 FieldName="TimeStamp"
-                Header="TimeStamp" />
+                Header="{lex:Loc}"
+                Visible="{Binding ElementName=LogWindowTimeTBtn, Path=IsChecked}" />
             <dxg:GridColumn
+                x:Name="LogWindowLevelCol"
+                Width="80"
+                FieldName="Level"
+                Header="{lex:Loc}" />
+            <dxg:GridColumn
+                x:Name="LogWindowMessageCol"
                 Width="20*"
-                MinWidth="100"
-                FieldName="Lvl"
-                Header="Lvl" />
-            <dxg:GridColumn
-                Width="70*"
-                MinWidth="100"
-                FieldName="Text"
-                Header="Text" />
+                FieldName="Message"
+                Header="{lex:Loc}" />
         </dxg:GridControl>
-        <Button
-            Width="75"
-            Margin="10,10,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Click="Clear_Click"
-            Content="Clear" />
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <dx:SimpleButton
+                x:Name="LogWindowVerboseTBtn"
+                Width="100"
+                Height="30"
+                Margin="5,0,0,0"
+                ButtonKind="Toggle"
+                Content="{lex:Loc}"
+                Glyph="{dx:DXImage SvgImages/XAF/Action_Debug_Step.svg}"
+                IsChecked="{Binding ShowVerbose}" />
+            <dx:SimpleButton
+                x:Name="LogWindowDebugTBtn"
+                Width="100"
+                Height="30"
+                Margin="5,0,0,0"
+                ButtonKind="Toggle"
+                Content="{lex:Loc}"
+                Glyph="{dx:DXImage SvgImages/Icon Builder/Security_Bug.svg}"
+                IsChecked="{Binding ShowDebug}" />
+            <dx:SimpleButton
+                x:Name="LogWindowInfoTBtn"
+                Width="100"
+                Height="30"
+                Margin="5,0,0,0"
+                ButtonKind="Toggle"
+                Content="{lex:Loc}"
+                Glyph="{dx:DXImage SvgImages/DiagramIcons/BindingEditorHelpIcon.svg}"
+                IsChecked="{Binding ShowInfo}" />
+            <dx:SimpleButton
+                x:Name="LogWindowWarningTBtn"
+                Width="100"
+                Height="30"
+                Margin="5,0,0,0"
+                ButtonKind="Toggle"
+                Content="{lex:Loc}"
+                Glyph="{dx:DXImage SvgImages/Icon Builder/Security_Warning.svg}"
+                IsChecked="{Binding ShowWarning}" />
+            <dx:SimpleButton
+                x:Name="LogWindowErrorTBtn"
+                Width="100"
+                Height="30"
+                Margin="5,0,0,0"
+                ButtonKind="Toggle"
+                Content="{lex:Loc}"
+                Glyph="{dx:DXImage SvgImages/Icon Builder/Security_WarningCircled1.svg}"
+                IsChecked="{Binding ShowError}" />
+            <dx:SimpleButton
+                x:Name="LogWindowTimeTBtn"
+                Width="100"
+                Height="30"
+                Margin="5,0,0,0"
+                ButtonKind="Toggle"
+                Content="{lex:Loc}"
+                Glyph="{dx:DXImage SvgImages/Icon Builder/Actions_Clock.svg}"
+                IsChecked="True" />
+        </StackPanel>
     </Grid>
 </UserControl>

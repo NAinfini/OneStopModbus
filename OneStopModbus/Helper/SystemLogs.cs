@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 namespace OneStopModbus.Helper
 {
     public class SystemLogs
-    {
-        public LogWindowSink sink;
 
+    {
         public ObservableCollection<LogMsg> logMsgs;
+        private LogWindowSink sink;
 
         public static SystemLogs Instance
         {
@@ -25,19 +25,28 @@ namespace OneStopModbus.Helper
             }
         }
 
-        public static void Initialization()
+        public static void Initialize()
         {
-            m_instance = new SystemLogs();
+            if (m_instance == null)
+            {
+                m_instance = new SystemLogs();
+            }
+            Log.Logger.Information("SystemLogs initialized");
         }
 
         private static SystemLogs m_instance = null;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SystemLogs"/> class.
+        /// </summary>
+        /// <remarks>
+        /// do not log anything in the constructor as it will cause a deadlock
+        /// </remarks>
         private SystemLogs()
         {
             sink = new LogWindowSink();
-            sink.AssignParent(this);
             logMsgs = new ObservableCollection<LogMsg>();
-            Log.Logger = new LoggerConfiguration().MinimumLevel.Debug()
+            Log.Logger = new LoggerConfiguration().MinimumLevel.Verbose()
                 .WriteTo.File($"{FileHelpers.LogFolderPath}\\ModebusStop.txt", rollingInterval: RollingInterval.Day, fileSizeLimitBytes: 1000000, rollOnFileSizeLimit: true, retainedFileCountLimit: 10)
                 .WriteTo.Sink(sink)
                 .CreateLogger();
@@ -46,33 +55,24 @@ namespace OneStopModbus.Helper
 
     public class LogWindowSink() : ILogEventSink
     {
-        private SystemLogs parent;
-
-        public void AssignParent(SystemLogs systemLogs)
-        {
-            parent = systemLogs;
-        }
-
-        /// <summary>
-        /// Emit the provided log event to the sink.
-        /// </summary>
-        /// <param name="logEvent">The log event to write</param>
         public void Emit(LogEvent logEvent)
         {
             LogMsg msg = new LogMsg()
             {
-                Text = logEvent.RenderMessage(),
-                Lvl = logEvent.Level.ToString(),
-                TimeStamp = logEvent.Timestamp.ToString("yyyy-MM-dd HH-mm-ss-ffff"),
+                Message = logEvent.RenderMessage(),
+                Level = logEvent.Level.ToString(),
+                TimeStamp = logEvent.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.ffff"),
+                exception = logEvent.Exception
             };
-            parent.logMsgs.Add(msg);
+            SystemLogs.Instance.logMsgs.Add(msg);
         }
     }
 
     public struct LogMsg
     {
-        public string Lvl;
-        public string Text;
-        public string TimeStamp;
+        public string Level { get; set; }
+        public string Message { get; set; }
+        public string TimeStamp { get; set; }
+        public Exception? exception { get; set; }
     }
 }

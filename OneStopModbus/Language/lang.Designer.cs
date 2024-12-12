@@ -61,11 +61,101 @@ namespace OneStopModbus.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Debug.
         /// </summary>
-        internal static string String1 {
+        internal static string LogWindowDebugTBtn {
             get {
-                return ResourceManager.GetString("String1", resourceCulture);
+                return ResourceManager.GetString("LogWindowDebugTBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string LogWindowErrorTBtn {
+            get {
+                return ResourceManager.GetString("LogWindowErrorTBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        internal static string LogWindowInfoTBtn {
+            get {
+                return ResourceManager.GetString("LogWindowInfoTBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Level.
+        /// </summary>
+        internal static string LogWindowLevelCol {
+            get {
+                return ResourceManager.GetString("LogWindowLevelCol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        internal static string LogWindowMessageCol {
+            get {
+                return ResourceManager.GetString("LogWindowMessageCol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log Window.
+        /// </summary>
+        internal static string LogWindowPanelName {
+            get {
+                return ResourceManager.GetString("LogWindowPanelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time Stamp.
+        /// </summary>
+        internal static string LogWindowTimeStampCol {
+            get {
+                return ResourceManager.GetString("LogWindowTimeStampCol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time Stamp.
+        /// </summary>
+        internal static string LogWindowTimeTBtn {
+            get {
+                return ResourceManager.GetString("LogWindowTimeTBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verbose.
+        /// </summary>
+        internal static string LogWindowVerboseTBtn {
+            get {
+                return ResourceManager.GetString("LogWindowVerboseTBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        internal static string LogWindowWarningTBtn {
+            get {
+                return ResourceManager.GetString("LogWindowWarningTBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        internal static string MainRibbonMenuFile {
+            get {
+                return ResourceManager.GetString("MainRibbonMenuFile", resourceCulture);
             }
         }
     }

@@ -52,10 +52,11 @@ namespace OneStopModbus
         {
             DataContext = this;
             InitializeComponent();
-            SystemLogs.Initialization();
-            Log.Logger.Information("Log initialized");
-            AddFloatingLayoutPanel();
-            Log.Logger.Information("MainWindowInitalized");
+            Log.Logger.Verbose("verbose logged");
+            Log.Logger.Information("MainWindow Initialized");
+            Log.Logger.Debug("MainWindow Initialized");
+            Log.Logger.Warning("MainWindow Initialized");
+            Log.Logger.Error("MainWindow Initialized");
         }
 
         private void AddFloatingLayoutPanel()
@@ -69,6 +70,11 @@ namespace OneStopModbus
             FloatGroup floatGroup = new FloatGroup();
             floatGroup.Add(floatingPanel);
             MainDockLyoutManager.FloatGroups.Add(floatGroup);
+        }
+
+        private void saveAsItem_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            Log.Logger.Information("Save As Clicked");
         }
     }
 }

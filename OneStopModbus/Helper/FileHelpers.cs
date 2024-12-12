@@ -8,7 +8,7 @@ namespace OneStopModbus.Helper
 {
     public static class FileHelpers
     {
-        public static string MainFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ModbusOneStop";
+        public static string MainFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\OneStopModbus";
         public static string LogFolderPath = $"{MainFolderPath}\\Logs";
     }
 }
