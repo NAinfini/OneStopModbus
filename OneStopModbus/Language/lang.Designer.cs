@@ -61,6 +61,132 @@ namespace OneStopModbus.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Baud Rate.
+        /// </summary>
+        internal static string CSWindowBaudRateLabel {
+            get {
+                return ResourceManager.GetString("CSWindowBaudRateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connect.
+        /// </summary>
+        internal static string CSWindowConnectButton {
+            get {
+                return ResourceManager.GetString("CSWindowConnectButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Bit.
+        /// </summary>
+        internal static string CSWindowDataBitLabel {
+            get {
+                return ResourceManager.GetString("CSWindowDataBitLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ethernet Connection.
+        /// </summary>
+        internal static string CSWindowICPTabName {
+            get {
+                return ResourceManager.GetString("CSWindowICPTabName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IP Address.
+        /// </summary>
+        internal static string CSWindowIPLabel {
+            get {
+                return ResourceManager.GetString("CSWindowIPLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set up as Slave.
+        /// </summary>
+        internal static string CSWindowIsSlaveCheckBox {
+            get {
+                return ResourceManager.GetString("CSWindowIsSlaveCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parity Bit.
+        /// </summary>
+        internal static string CSWindowParityBitLabel {
+            get {
+                return ResourceManager.GetString("CSWindowParityBitLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poll Delay.
+        /// </summary>
+        internal static string CSWindowPollDelayLabel {
+            get {
+                return ResourceManager.GetString("CSWindowPollDelayLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port Number.
+        /// </summary>
+        internal static string CSWindowPortNumberLabel {
+            get {
+                return ResourceManager.GetString("CSWindowPortNumberLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Response Time Out.
+        /// </summary>
+        internal static string CSWindowResponseTimeOutLabel {
+            get {
+                return ResourceManager.GetString("CSWindowResponseTimeOutLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port Name.
+        /// </summary>
+        internal static string CSWindowSerialPortNameLabel {
+            get {
+                return ResourceManager.GetString("CSWindowSerialPortNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serial Connection.
+        /// </summary>
+        internal static string CSWindowSerialTabName {
+            get {
+                return ResourceManager.GetString("CSWindowSerialTabName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop Bit.
+        /// </summary>
+        internal static string CSWindowStopBitLabel {
+            get {
+                return ResourceManager.GetString("CSWindowStopBitLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time Out.
+        /// </summary>
+        internal static string CSWindowTimeOutLabel {
+            get {
+                return ResourceManager.GetString("CSWindowTimeOutLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Debug.
         /// </summary>
         internal static string LogWindowDebugTBtn {

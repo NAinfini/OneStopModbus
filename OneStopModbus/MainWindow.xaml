@@ -14,7 +14,7 @@
     Width="1280"
     Height="720"
     lex:LocalizeDictionary.DesignCulture="en"
-    lex:ResxLocalizationProvider.DefaultAssembly="OneStopModbus"
+    lex:ResxLocalizationProvider.DefaultAssembly="OneStopModbusConnec"
     lex:ResxLocalizationProvider.DefaultDictionary="lang">
     <DockPanel>
         <dxr:RibbonControl
@@ -111,7 +111,9 @@
                     </dxdo:LayoutGroup>
                 </dxdo:LayoutGroup>
                 <dxdo:LayoutGroup ItemWidth="300" Orientation="Vertical">
-                    <dxdo:LayoutPanel Caption="Panel2" />
+                    <dxdo:LayoutPanel Caption="Panel2">
+                        <views:ConnectionSettingWindow />
+                    </dxdo:LayoutPanel>
                     <dxdo:LayoutPanel Caption="Panel1" />
                 </dxdo:LayoutGroup>
             </dxdo:LayoutGroup>

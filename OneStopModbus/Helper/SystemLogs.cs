@@ -15,6 +15,7 @@ namespace OneStopModbus.Helper
 
     {
         public ObservableCollection<LogMsg> logMsgs;
+        public LogMsg LastLogMsg;
         private LogWindowSink sink;
 
         public static SystemLogs Instance

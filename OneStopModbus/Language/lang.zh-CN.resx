@@ -130,4 +130,46 @@
   <data name="MainRibbonMenuFile" xml:space="preserve">
     <value>文件</value>
   </data>
+  <data name="CSWindowSerialTabName" xml:space="preserve">
+    <value>串行连接</value>
+  </data>
+  <data name="CSWindowSerialPortNameLabel" xml:space="preserve">
+    <value>端口名称</value>
+  </data>
+  <data name="CSWindowBaudRateLabel" xml:space="preserve">
+    <value>波特率</value>
+  </data>
+  <data name="CSWindowParityBitLabel" xml:space="preserve">
+    <value>校验位</value>
+  </data>
+  <data name="CSWindowDataBitLabel" xml:space="preserve">
+    <value>数据位</value>
+  </data>
+  <data name="CSWindowStopBitLabel" xml:space="preserve">
+    <value>停止位</value>
+  </data>
+  <data name="CSWindowICPTabName" xml:space="preserve">
+    <value>以太网连接</value>
+  </data>
+  <data name="CSWindowIPLabel" xml:space="preserve">
+    <value>IP地址</value>
+  </data>
+  <data name="CSWindowPortNumberLabel" xml:space="preserve">
+    <value>端口</value>
+  </data>
+  <data name="CSWindowPollDelayLabel" xml:space="preserve">
+    <value>轮询间隔</value>
+  </data>
+  <data name="CSWindowResponseTimeOutLabel" xml:space="preserve">
+    <value>响应超时</value>
+  </data>
+  <data name="CSWindowIsSlaveCheckBox" xml:space="preserve">
+    <value>设置为从机</value>
+  </data>
+  <data name="CSWindowConnectButton" xml:space="preserve">
+    <value>连接</value>
+  </data>
+  <data name="CSWindowTimeOutLabel" xml:space="preserve">
+    <value>超时断开</value>
+  </data>
 </root>

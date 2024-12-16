@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OneStopModbus.Settings;
 
 namespace OneStopModbus
 {
@@ -52,11 +53,12 @@ namespace OneStopModbus
         {
             DataContext = this;
             InitializeComponent();
-            Log.Logger.Verbose("verbose logged");
-            Log.Logger.Information("MainWindow Initialized");
-            Log.Logger.Debug("MainWindow Initialized");
-            Log.Logger.Warning("MainWindow Initialized");
-            Log.Logger.Error("MainWindow Initialized");
+            Log.Verbose("verbose logged");
+            Log.Information("MainWindow Initialized");
+            Log.Debug("MainWindow Initialized");
+            Log.Warning("MainWindow Initialized");
+            Log.Error("MainWindow Initialized");
+            ConnectionSettings connectionSettings = new ConnectionSettings();
         }
 
         private void AddFloatingLayoutPanel()

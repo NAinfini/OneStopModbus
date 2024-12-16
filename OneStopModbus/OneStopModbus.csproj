@@ -7,11 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="debug.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DevExpress.Wpf" Version="24.1.7" />
     <PackageReference Include="DevExpress.Wpf.ThemesLW" Version="24.1.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NModbus" Version="3.0.81" />
+    <PackageReference Include="NModbus.Serial" Version="3.0.81" />
     <PackageReference Include="Serilog" Version="4.2.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+    <PackageReference Include="System.IO.Ports" Version="9.0.0" />
     <PackageReference Include="WPFLocalizeExtension" Version="3.10.0" />
   </ItemGroup>
 
@@ -20,6 +27,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>lang.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -31,8 +43,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Converter\" />
-    <Folder Include="NewFolder\" />
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>
