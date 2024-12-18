@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
     xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dxdlg="http://schemas.devexpress.com/winfx/2008/xaml/dialogs"
     xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
@@ -14,8 +15,9 @@
     Width="1280"
     Height="720"
     lex:LocalizeDictionary.DesignCulture="en"
-    lex:ResxLocalizationProvider.DefaultAssembly="OneStopModbusConnec"
-    lex:ResxLocalizationProvider.DefaultDictionary="lang">
+    lex:ResxLocalizationProvider.DefaultAssembly="OneStopModbus"
+    lex:ResxLocalizationProvider.DefaultDictionary="lang"
+    WindowState="Maximized">
     <DockPanel>
         <dxr:RibbonControl
             AllowCustomization="False"
@@ -27,7 +29,7 @@
 
             <dxr:RibbonDefaultPageCategory>
 
-                <dxr:RibbonPage x:Name="MainRibbonMenuFile" Caption="{lex:Loc}">
+                <dxr:RibbonPage x:Name="MWindowRibbonPCFile" Caption="{lex:Loc}">
 
                     <dxr:RibbonPageGroup Caption="abcd">
                         <dxb:BarButtonItem
@@ -35,20 +37,24 @@
                             Content="Save"
                             Glyph="{dx:DXImage SvgImages/Save/Save.svg}"
                             GlyphSize="Large"
+                            ItemClick="SaveItem_ItemClick"
                             LargeGlyph="{dx:DXImage SvgImages/DiagramIcons/save.svg}" />
                         <dxb:BarButtonItem
                             x:Name="newItem"
                             Content="New"
-                            Glyph="{dx:DXImage SvgImages/Actions/New.svg}" />
+                            Glyph="{dx:DXImage SvgImages/Actions/New.svg}"
+                            ItemClick="newItem_ItemClick" />
                         <dxb:BarButtonItem
                             x:Name="openItem"
                             Content="Open"
-                            Glyph="{dx:DXImage SvgImages/Actions/Up.svg}" />
+                            Glyph="{dx:DXImage SvgImages/Actions/Up.svg}"
+                            ItemClick="openItem_ItemClick" />
 
                         <dxb:BarButtonItem
                             x:Name="SaveasItem"
                             Content="Save as"
-                            Glyph="{dx:DXImage SvgImages/Save/Save.svg}" />
+                            Glyph="{dx:DXImage SvgImages/Save/Save.svg}"
+                            ItemClick="saveAsItem_ItemClick" />
                         <dxb:BarItemSeparator />
                         <dxr:BarButtonGroup x:Name="editorGroup">
                             <dxb:BarEditItem
@@ -78,8 +84,17 @@
                     </dxr:RibbonPageGroup>
                 </dxr:RibbonPage>
             </dxr:RibbonDefaultPageCategory>
-            <dxr:RibbonPage x:Name="ribbonPage_Main" Caption="View">
-                <dxr:RibbonPageGroup x:Name="ribbonPageGroup_Main">
+            <dxr:RibbonPage x:Name="MWindowRibbonPCView" Caption="View">
+                <dxr:RibbonPageGroup>
+                    <dxb:BarButtonItem Content="Show Log" Glyph="{dx:DXImage SvgImages/Actions/Log.svg}" />
+                    <dxb:BarButtonItem Content="Show Log" Glyph="{dx:DXImage SvgImages/Actions/Log.svg}" />
+                    <dxb:BarButtonItem Content="Show Log" Glyph="{dx:DXImage SvgImages/Actions/Log.svg}" />
+                    <dxb:BarButtonItem
+                        x:Name="showLogItem"
+                        Content="Show Log"
+                        Glyph="{dx:DXImage SvgImages/Actions/Log.svg}" />
+                </dxr:RibbonPageGroup>
+                <dxr:RibbonPageGroup x:Name="MWindowRibbonThemeSelector" Caption="{lex:Loc}">
                     <dxr:RibbonGalleryBarItem x:Name="ribbonGalleryBarItem_Theme">
                         <dxmvvm:Interaction.Behaviors>
                             <dxr:RibbonGalleryItemThemeSelectorBehavior />
@@ -99,19 +114,24 @@
         </dxr:RibbonStatusBarControl>
         <dxdo:DockLayoutManager x:Name="MainDockLyoutManager" FloatingMode="Desktop">
             <dxdo:LayoutGroup Caption="LayoutRoot">
-                <dxdo:LayoutPanel Caption="Panel" ItemWidth="200" />
+                <dxdo:LayoutPanel
+                    x:Name="ItemTreePanel"
+                    Caption="{lex:Loc}"
+                    ItemWidth="200">
+                    <views:DeviceTreeView />
+                </dxdo:LayoutPanel>
                 <dxdo:LayoutGroup Orientation="Vertical">
                     <dxdo:DocumentGroup>
                         <dxdo:DocumentPanel Caption="Document" />
                     </dxdo:DocumentGroup>
                     <dxdo:LayoutGroup ItemHeight="200">
-                        <dxdo:LayoutPanel x:Name="LogWindowPanelName" Caption="{lex:Loc}">
+                        <dxdo:LayoutPanel x:Name="LogWindowPanel" Caption="{lex:Loc}">
                             <views:LogWindow />
                         </dxdo:LayoutPanel>
                     </dxdo:LayoutGroup>
                 </dxdo:LayoutGroup>
                 <dxdo:LayoutGroup ItemWidth="300" Orientation="Vertical">
-                    <dxdo:LayoutPanel Caption="Panel2">
+                    <dxdo:LayoutPanel x:Name="CSWindowPanel" Caption="{lex:Loc}">
                         <views:ConnectionSettingWindow />
                     </dxdo:LayoutPanel>
                     <dxdo:LayoutPanel Caption="Panel1" />

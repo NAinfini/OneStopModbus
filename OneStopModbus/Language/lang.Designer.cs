@@ -115,6 +115,15 @@ namespace OneStopModbus.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connection Settings.
+        /// </summary>
+        internal static string CSWindowPanel {
+            get {
+                return ResourceManager.GetString("CSWindowPanel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parity Bit.
         /// </summary>
         internal static string CSWindowParityBitLabel {
@@ -187,6 +196,15 @@ namespace OneStopModbus.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Devices.
+        /// </summary>
+        internal static string ItemTreePanel {
+            get {
+                return ResourceManager.GetString("ItemTreePanel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Debug.
         /// </summary>
         internal static string LogWindowDebugTBtn {
@@ -201,6 +219,15 @@ namespace OneStopModbus.Language {
         internal static string LogWindowErrorTBtn {
             get {
                 return ResourceManager.GetString("LogWindowErrorTBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exception.
+        /// </summary>
+        internal static string LogWindowExceptionCol {
+            get {
+                return ResourceManager.GetString("LogWindowExceptionCol", resourceCulture);
             }
         }
         
@@ -234,9 +261,9 @@ namespace OneStopModbus.Language {
         /// <summary>
         ///   Looks up a localized string similar to Log Window.
         /// </summary>
-        internal static string LogWindowPanelName {
+        internal static string LogWindowPanel {
             get {
-                return ResourceManager.GetString("LogWindowPanelName", resourceCulture);
+                return ResourceManager.GetString("LogWindowPanel", resourceCulture);
             }
         }
         
@@ -279,9 +306,27 @@ namespace OneStopModbus.Language {
         /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
-        internal static string MainRibbonMenuFile {
+        internal static string MWindowRibbonPCFile {
             get {
-                return ResourceManager.GetString("MainRibbonMenuFile", resourceCulture);
+                return ResourceManager.GetString("MWindowRibbonPCFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View.
+        /// </summary>
+        internal static string MWindowRibbonPCView {
+            get {
+                return ResourceManager.GetString("MWindowRibbonPCView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        internal static string MWindowRibbonThemeSelector {
+            get {
+                return ResourceManager.GetString("MWindowRibbonThemeSelector", resourceCulture);
             }
         }
     }

@@ -124,10 +124,10 @@
   <data name="LogWindowVerboseTBtn" xml:space="preserve">
     <value>杂项</value>
   </data>
-  <data name="LogWindowPanelName" xml:space="preserve">
+  <data name="LogWindowPanel" xml:space="preserve">
     <value>日志窗口</value>
   </data>
-  <data name="MainRibbonMenuFile" xml:space="preserve">
+  <data name="MWindowRibbonPCFile" xml:space="preserve">
     <value>文件</value>
   </data>
   <data name="CSWindowSerialTabName" xml:space="preserve">
@@ -171,5 +171,8 @@
   </data>
   <data name="CSWindowTimeOutLabel" xml:space="preserve">
     <value>超时断开</value>
+  </data>
+  <data name="LogWindowExceptionCol" xml:space="preserve">
+    <value>报错</value>
   </data>
 </root>

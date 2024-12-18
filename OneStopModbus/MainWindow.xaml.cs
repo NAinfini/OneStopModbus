@@ -6,18 +6,13 @@ using Serilog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using OneStopModbus.Settings;
+using System.Windows.Forms;
+using DevExpress.Xpf.Dialogs;
+using DevExpress.Utils.MVVM.Services;
+using DevExpress.Mvvm.POCO;
+using DevExpress.Mvvm;
+using System.IO;
 
 namespace OneStopModbus
 {
@@ -39,7 +34,9 @@ namespace OneStopModbus
 
         #region Public Properties
 
-        public string name;
+        public LayoutPanel LWindowPanel { get; set; }
+        public LayoutPanel DeviceTreePanel { get; set; }
+        public LayoutPanel ConnectionSettingPanel { get; set; }
 
         #endregion Public Properties
 
@@ -53,12 +50,10 @@ namespace OneStopModbus
         {
             DataContext = this;
             InitializeComponent();
-            Log.Verbose("verbose logged");
+            LWindowPanel = this.LogWindowPanel;
+            DeviceTreePanel = this.ItemTreePanel;
+            ConnectionSettingPanel = this.CSWindowPanel;
             Log.Information("MainWindow Initialized");
-            Log.Debug("MainWindow Initialized");
-            Log.Warning("MainWindow Initialized");
-            Log.Error("MainWindow Initialized");
-            ConnectionSettings connectionSettings = new ConnectionSettings();
         }
 
         private void AddFloatingLayoutPanel()
@@ -76,7 +71,63 @@ namespace OneStopModbus
 
         private void saveAsItem_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            Log.Logger.Information("Save As Clicked");
+            try
+            {
+                ProjectSettings.Instance.SaveAsProjectToJson();
+                Log.Information($"Project saved:{ProjectSettings.Instance.ProjectName}");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error saving project");
+            }
+        }
+
+        private void openItem_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog()
+                {
+                    Filter = "Json files (*.json)|*.json|All files (*.*)|*.*",
+                    RestoreDirectory = true,
+                    Title = "Open Project",
+                };
+                if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    ProjectSettings.Instance.LoadProjectFromJson(openFileDialog.FileName);
+                    Log.Information($"Project opened:{ProjectSettings.Instance.ProjectName}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error opening project");
+            }
+        }
+
+        private void SaveItem_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            try
+            {
+                ProjectSettings.Instance.SaveProjectToJson();
+                Log.Information($"Project saved:{ProjectSettings.Instance.ProjectName}");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error saving project");
+            }
+        }
+
+        private void newItem_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            try
+            {
+                ProjectSettings.Instance = new ProjectSettings();
+                Log.Information("New project created");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error creating new project");
+            }
         }
     }
 }

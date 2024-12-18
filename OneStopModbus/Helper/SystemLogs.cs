@@ -31,8 +31,8 @@ namespace OneStopModbus.Helper
             if (m_instance == null)
             {
                 m_instance = new SystemLogs();
+                Log.Logger.Information("SystemLogs initialized");
             }
-            Log.Logger.Information("SystemLogs initialized");
         }
 
         private static SystemLogs m_instance = null;
@@ -62,9 +62,12 @@ namespace OneStopModbus.Helper
             {
                 Message = logEvent.RenderMessage(),
                 Level = logEvent.Level.ToString(),
-                TimeStamp = logEvent.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.ffff"),
-                exception = logEvent.Exception
+                TimeStamp = logEvent.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.ffff")
             };
+            if (logEvent.Exception != null)
+            {
+                msg.exception = logEvent.Exception.Message;
+            }
             SystemLogs.Instance.logMsgs.Add(msg);
         }
     }
@@ -74,6 +77,6 @@ namespace OneStopModbus.Helper
         public string Level { get; set; }
         public string Message { get; set; }
         public string TimeStamp { get; set; }
-        public Exception? exception { get; set; }
+        public string? exception { get; set; }
     }
 }

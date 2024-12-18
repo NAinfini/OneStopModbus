@@ -88,6 +88,11 @@
                 Width="20*"
                 FieldName="Message"
                 Header="{lex:Loc}" />
+            <dxg:GridColumn
+                x:Name="LogWindowExceptionCol"
+                Width="50*"
+                FieldName="exception"
+                Header="{lex:Loc}" />
         </dxg:GridControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <dx:SimpleButton

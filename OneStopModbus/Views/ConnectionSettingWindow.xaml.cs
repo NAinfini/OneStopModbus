@@ -61,9 +61,15 @@ namespace OneStopModbus.Views
         public ConnectionSettingWindow()
         {
             DataContext = this;
-            ConnectionSettings = ProjectSettings.Instance.ConnectionSettings;
+            ProjectSettings.Instance.ProjectSettingUpdated += ProjectSettingUpdated;
             StartSerialPortMonitor();
             InitializeComponent();
+        }
+
+        public void ProjectSettingUpdated(object sender, EventArgs e)
+        {
+            ConnectionSettings = ProjectSettings.Instance.ConnectionSettings;
+            CSWindowTabControl.UpdateViewProperties();
         }
 
         private void StartSerialPortMonitor()

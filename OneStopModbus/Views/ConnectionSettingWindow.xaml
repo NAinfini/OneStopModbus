@@ -32,6 +32,7 @@
         </Grid.ColumnDefinitions>
         <dx:DXTabControl
             Grid.Row="0"
+            x:Name="CSWindowTabControl"
             Grid.ColumnSpan="2"
             Margin="5,5,5,5"
             SelectedItem="{Binding ConnectionSettings.ConnectionHardware, Converter={StaticResource TabItemToEnumConverter}}">

@@ -144,10 +144,10 @@
   <data name="LogWindowErrorTBtn" xml:space="preserve">
     <value>Error</value>
   </data>
-  <data name="LogWindowPanelName" xml:space="preserve">
+  <data name="LogWindowPanel" xml:space="preserve">
     <value>Log Window</value>
   </data>
-  <data name="MainRibbonMenuFile" xml:space="preserve">
+  <data name="MWindowRibbonPCFile" xml:space="preserve">
     <value>File</value>
   </data>
   <data name="CSWindowSerialTabName" xml:space="preserve">
@@ -191,5 +191,20 @@
   </data>
   <data name="CSWindowConnectButton" xml:space="preserve">
     <value>Connect</value>
+  </data>
+  <data name="LogWindowExceptionCol" xml:space="preserve">
+    <value>Exception</value>
+  </data>
+  <data name="MWindowRibbonThemeSelector" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="MWindowRibbonPCView" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="CSWindowPanel" xml:space="preserve">
+    <value>Connection Settings</value>
+  </data>
+  <data name="ItemTreePanel" xml:space="preserve">
+    <value>Devices</value>
   </data>
 </root>

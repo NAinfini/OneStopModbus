@@ -10,14 +10,6 @@ using DevExpress.XtraLayout.Utils;
 
 namespace OneStopModbus.Helper
 {
-    internal class Parameter
-    {
-        private void temp()
-        {
-            ModbusFactory factory = new ModbusFactory();
-        }
-    }
-
     public class SlaveStorage : ISlaveDataStore
     {
         private readonly SparsePointSource<bool> _coilDiscretes;

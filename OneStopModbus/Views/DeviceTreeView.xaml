@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="OneStopModbus.Views.DeviceTreeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:OneStopModbus.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <Grid>
+        <dxg:TreeViewControl
+            ContextMenuOpening="TreeViewControl_ContextMenuOpening"
+            ItemsSource="{Binding Devices}"
+            ShowBorder="False"
+            ShowNodeImages="True"
+            TreeViewFieldName="Name">
+            <dxg:TreeViewControl.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Add Device" />
+                    <MenuItem Header="Remove Device" />
+                </ContextMenu>
+            </dxg:TreeViewControl.ContextMenu>
+            <dxg:TreeViewControl.ChildNodesSelector>
+                <converters:TreeItemChildrenSelector />
+            </dxg:TreeViewControl.ChildNodesSelector>
+            <dxg:TreeViewControl.NodeImageSelector>
+                <converters:TreeItemImageSelector />
+            </dxg:TreeViewControl.NodeImageSelector>
+        </dxg:TreeViewControl>
+    </Grid>
+</UserControl>
